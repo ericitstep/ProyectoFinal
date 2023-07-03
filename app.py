@@ -20,16 +20,7 @@ def index():
 
 @app.route('/analisis', methods=['POST'])
 def analizar_archivo():
-    """
-    Ruta de la API para analizar un archivo comprimido en formato bz2 y realizar el análisis de números de coincidencias.
-
-    Recibe una solicitud POST con un archivo comprimido en formato bz2.
-    Realiza el análisis de números de coincidencias en el archivo.
-    Devuelve los resultados del análisis en formato JSON.
-
-    Returns:
-        jsonify: Resultados del análisis en formato JSON.
-    """
+    
     try:
         archivo = request.files['archivo']
     except KeyError:
