@@ -1,0 +1,98 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <title>Análisis de Números de Coincidencias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="file"] {
+            display: block;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+        .resultados-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .resultado-item {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análisis de Números de Coincidencias</h1>
+        <form id="upload-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="archivo">Selecciona un archivo:</label>
+                <input type="file" id="archivo" name="archivo">
+            </div>
+            <div class="form-group">
+                <button type="submit">Analizar</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById("upload-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var formData = new FormData(form);
+            fetch("/analisis", {
+                method: "POST",
+                body: formData
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                // Manejar los resultados del análisis aquí
+                var resultadosContainer = document.createElement("div");
+                resultadosContainer.classList.add("resultados-container");
+
+                // Crear elementos HTML para mostrar los resultados
+                for (var i = 0; i < data.length; i++) {
+                    var resultadoItem = document.createElement("div");
+                    resultadoItem.classList.add("resultado-item");
+                    resultadoItem.textContent = JSON.stringify(data[i]);
+                    resultadosContainer.appendChild(resultadoItem);
+                }
+
+                // Mostrar los resultados en la página
+                var container = document.querySelector(".container");
+                container.appendChild(resultadosContainer);
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+        });
+    </script>
+</body>
+</html>
