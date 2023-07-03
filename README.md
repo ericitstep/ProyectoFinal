@@ -1,4 +1,4 @@
-# Análisis de Números de Coincidencias con Flask y Pandas
+# Análisis de Datos con Flask y Pandas
 
 Este proyecto utiliza Flask, Python y Pandas para realizar el análisis de números de coincidencias en archivos comprimidos en formato bz2. Proporciona una API que acepta archivos bz2 y devuelve los resultados del análisis en formato JSON.
 
