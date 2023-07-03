@@ -9,7 +9,7 @@ import bz2
 # Ejemplo: Si se envía una solicitud POST con un archivo 'datos.bz2' correctamente,
 # devuelve un JSON con los resultados del análisis de números de coincidencias en el archivo.
 
-aapp = Flask(__name__)
+app = Flask(__name__)
 
 @app.route('/')
 def index():
