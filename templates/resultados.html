@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de Coincidencias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .resultados {
+            margin-top: 20px;
+        }
+        .resultados table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .resultados table th,
+        .resultados table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .resultados table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultados de Coincidencias</h1>
+        <div class="resultados">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Duration</th>
+                        <th>SrcDevice</th>
+                        <th>DstDevice</th>
+                        <th>Protocol</th>
+                        <th>SrcProt</th>
+                        <th>DstPort</th>
+                        <th>SrcPackets</th>
+                        <th>DstPackets</th>
+                        <th>SrcBytes</th>
+                        <th>DstBytes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for resultado in resultados %}
+                        <tr>
+                            <td>{{ resultado.Time }}</td>
+                            <td>{{ resultado.Duration }}</td>
+                            <td>{{ resultado.SrcDevice }}</td>
+                            <td>{{ resultado.DstDevice }}</td>
+                            <td>{{ resultado.Protocol }}</td>
+                            <td>{{ resultado.SrcProt }}</td>
+                            <td>{{ resultado.DstPort }}</td>
+                            <td>{{ resultado.SrcPackets }}</td>
+                            <td>{{ resultado.DstPackets }}</td>
+                            <td>{{ resultado.SrcBytes }}</td>
+                            <td>{{ resultado.DstBytes }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
